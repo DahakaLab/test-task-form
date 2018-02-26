@@ -39,8 +39,7 @@ export default class OutputFormData extends Component {
 
     validityFormEmail(){
 
-        const email = 'вв@22.ru';
-        const r = /^[\w\.\d-_]+@[\w\.\d-_]+\.\w{2,4}$/i;
+        const r = /^[\w\d-_]+@[\w\d-_]+\.\w{2,4}$/i;
 
         if((this.props.data[1] === '') || (this.props.data[1] === undefined)){
 
@@ -73,7 +72,7 @@ export default class OutputFormData extends Component {
 
         }else{
 
-            if((this.props.data[2].charAt(0) === '+') || (this.props.data[2].charAt(0) === '8') && (this.props.data[2].length < 30)) {
+            if(((this.props.data[2].charAt(0) === '+') || (this.props.data[2].charAt(0) === '8')) && (this.props.data[2].length < 30)) {
 
                 if(isNaN(this.props.data[2] * 1) === false) {
                     const text = <p>Ваш телефон: {this.props.data[2]}</p>;
