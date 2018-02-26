@@ -5,7 +5,7 @@ export default class Form extends Component{
         super(props);
         this.state = {
             policyForm: this.props.dataUser.policy,
-            notCheckedForm: this.props.dataUser.notChecked
+            notCheckedForm: true
         };
 
         this.handleMethodEventOnClickEnterChangeState = this.handleMethodEventOnClickEnterChangeState.bind(this);
@@ -42,8 +42,6 @@ export default class Form extends Component{
         this.refs.phone.value="";
         this.refs.password.value="";
         this.refs.confirm_password.value="";
-
-        console.log(this.refs.policy.value);
     }
 
     render(){

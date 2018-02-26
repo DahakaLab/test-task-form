@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Form from "./form";
+import OutputFormData from './outputFormData.js'
 
 export default class ContainerForm extends Component{
     constructor(props) {
@@ -11,7 +12,7 @@ export default class ContainerForm extends Component{
             password: "",
             confirmPassword: "",
             policy: false,
-            notChecked: true
+            arr: []
         };
 
         this.eventOnClickEnterChangeState = this.eventOnClickEnterChangeState.bind(this);
@@ -24,7 +25,7 @@ export default class ContainerForm extends Component{
     }
 
     eventOnClickEnterChangeState(dataUserArr) {
-        console.log(dataUserArr);
+        this.setState({arr: dataUserArr})
     }
 
     eventOnClickResetChangeState() {
@@ -35,9 +36,8 @@ export default class ContainerForm extends Component{
             password: "",
             confirmPassword: "",
             policy: false,
-            notChecked: false
+            test: []
         });
-        console.log('Click reset');
     }
 
     fioTextChange(event) {
@@ -62,16 +62,22 @@ export default class ContainerForm extends Component{
 
     render(){
         return(
-            <Form
-                eventOnClickEnterChangeState={ this.eventOnClickEnterChangeState }
-                eventOnClickResetChangeState={ this.eventOnClickResetChangeState }
-                dataUser={ this.state }
-                fioTextChange={ this.fioTextChange }
-                emailTextChange={ this.emailTextChange }
-                phoneTextChange={ this.phoneTextChange }
-                passwordTextChange={ this.passwordTextChange }
-                confirmPasswordTextChange={ this.confirmPasswordTextChange }
-            />
+            <div className="container">
+
+                <Form
+                    eventOnClickEnterChangeState={ this.eventOnClickEnterChangeState }
+                    eventOnClickResetChangeState={ this.eventOnClickResetChangeState }
+                    dataUser={ this.state }
+                    fioTextChange={ this.fioTextChange }
+                    emailTextChange={ this.emailTextChange }
+                    phoneTextChange={ this.phoneTextChange }
+                    passwordTextChange={ this.passwordTextChange }
+                    confirmPasswordTextChange={ this.confirmPasswordTextChange }
+                />
+
+                <OutputFormData data={this.state.arr} />
+
+            </div>
         )
     }
 }
